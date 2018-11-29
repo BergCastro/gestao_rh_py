@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap4form %}
+
+{% block main %}
+
+Edit
+
+<form method="post" class="form-horizontal">
+    {% csrf_token %}
+    {{ form|bootstrap4form_horizontal  }}
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+</form>
+
+{% endblock %}
