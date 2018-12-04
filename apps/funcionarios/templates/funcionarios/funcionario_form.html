@@ -1,18 +1,44 @@
 {% extends 'base.html' %}
-{% load bootstrap4form %}
+{% load bootstrap %}
 
 {% block main %}
 
-Edit
-
-<form method="post" class="form-horizontal">
+<form method="POST">
     {% csrf_token %}
-    {{ form|bootstrap4form_horizontal  }}
-    <div class="form-group">
-      <div class="col-sm-10 col-sm-offset-2">
-        <button type="submit" class="btn btn-primary">Salvar</button>
-      </div>
-    </div>
+
+    {{ form|bootstrap }}
+
+    <button type="submit" class="btn btn-main">Salvar</button>
 </form>
 
+<br>
+
+<br>
+<h2>Documentos</h2>
+<ul>
+{% for documento in object.documento_set.all %}
+    <li>
+        <a href="{{ documento.arquivo.url }} "> {{ documento.descricao }}  </a><br>
+    </li>
+{% endfor %}
+</ul>
+<a href="{% url 'create_documento' object.id %}" class="btn btn-success">
+    Adicionar documento
+</a>
+
+<br>
+<h2>Banco de horas</h2>
+<ul>
+{% for registro_hora in object.registrohoraextra_set.all %}
+    <li>
+        <a href="{% url 'update_hora_extra' registro_hora.id %}">
+            {{ registro_hora.motivo  }} | {{ registro_hora.horas }} <br>
+        </a>
+    </li>
+{% endfor %}
+</ul>
+
+<h3>Total de horas extras: {{ object.total_horas_extra }} </h3>
+
 {% endblock %}
+

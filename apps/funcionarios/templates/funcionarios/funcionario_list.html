@@ -5,11 +5,24 @@
     List
 <br>
     {% for funcionario in object_list %}
-        <a href="{% url 'update_funcionario' funcionario.id%}">
+        <a href="{% url 'update_funcionario' funcionario.id %}">
             {{ funcionario }}
         </a>
-        <a href="{% url 'delete_funcionario' funcionario.id%}">Deletar</a>
+        <a href="{% url 'delete_funcionario' funcionario.id %}">
+            Deletar
+        </a>
         <br>
     {% endfor %}
-    <a href="{% url 'novo_funcionario' %}" class="btn btn-primary">Novo</a>
+
+    <a href="{% url 'create_funcionario' %}" class="btn btn-info"> Novo </a>
+    <a href="{% url 'relatorio_funcionarios' %}" class="btn btn-info">
+        Relatorio de funcionarios
+    </a>
+    <a href="{% url 'relatorio_funcionarios_html' %}" class="btn btn-info">
+        Relatorio de funcionarios HTML
+    </a>
+    <a href="{% url 'relatorio_funcionarios_html_debug' %}" class="btn btn-danger">
+        Relatorio de funcionarios HTML
+    </a>
+
 {% endblock %}

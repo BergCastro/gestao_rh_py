@@ -3,3 +3,4 @@ from .models import RegistroHoraExtra
 
 
 admin.site.register(RegistroHoraExtra)
+
